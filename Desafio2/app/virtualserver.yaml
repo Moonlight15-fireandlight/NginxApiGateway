@@ -1,0 +1,17 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: api-vs
+  namespace: nginx-ingress
+spec:
+  host: desafio2nginx.k8s.accessq.tk #appch02.k8s.accessq.tk
+  tls: 
+    secret: server-secret
+    redirect:
+      enable: true
+  routes:
+    - path: /
+      route: frontend/frontend-vsr
+    - path: /api/v1
+      route: apigw/api-vsr
+

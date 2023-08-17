@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: apigw
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rest-api
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: frontend
+---

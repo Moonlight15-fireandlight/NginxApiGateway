@@ -1,0 +1,32 @@
+---
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServerRoute
+metadata:
+  name: frontend-vsr
+  namespace: frontend
+spec:
+  host: desafio2nginx.k8s.accessq.tk #appch02.k8s.accessq.tk
+  upstreams:
+    - name: frontend
+      service: frontend
+      port: 80
+  subroutes:
+    - path: /
+      action:
+        pass: frontend
+---
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServerRoute
+metadata:
+  name: api-vsr
+  namespace: apigw
+spec:
+  host: desafio2nginx.k8s.accessq.tk #appch02.k8s.accessq.tk
+  upstreams:
+    - name: apigw
+      service: apigw-microapigw
+      port: 80
+  subroutes:
+    - path: /api/v1
+      action:
+        pass: apigw

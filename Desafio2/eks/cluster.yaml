@@ -1,0 +1,16 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata: 
+  name: ch02-eks
+  region: us-east-1
+  version: "1.22"
+availabilityZones:
+- us-east-1a
+- us-east-1b
+- us-east-1c
+managedNodeGroups:
+- name: general
+  privateNetworking: true
+  instanceType: t2.medium
+  desiredCapacity: 3
